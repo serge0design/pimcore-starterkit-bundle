@@ -1,0 +1,22 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true #just a quick fix--use dependencyInjection //use false
+
+    SergeDesign\StarterkitBundle\Tools\Install:
+        arguments:
+            $bundle: "@=service('kernel').getBundle('PimcoreStarterkitBundle')"
+        calls:
+            - [ setTokenStorageUserResolver, [ '@Pimcore\Security\User\TokenStorageUserResolver' ] ]
+
+    SergeDesign\StarterkitBundle\Event\ValidKeyFormatter:
+        class: SergeDesign\StarterkitBundle\Event\ValidKeyFormatter
+        tags:
+            - { name: kernel.event_listener, event: pimcore.system.service.preGetValidKey, method: onGetValidKey }
+            - { name: kernel.event_listener, event: pimcore.system.service.preGetValidKey, method: onGetValidPath }
+
+    SergeDesign\StarterkitBundle\EventListener\EditmodeListener:
+        class: SergeDesign\StarterkitBundle\EventListener\EditmodeListener
+        tags:
+            - { name: kernel.event_listener, event: pimcore.bundle_manager.paths.js, method: onEditObjectsJsPathStarterkitBundles }
