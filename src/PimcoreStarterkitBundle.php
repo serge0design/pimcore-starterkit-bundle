@@ -6,7 +6,7 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 use Pimcore\Extension\Bundle\PimcoreBundleAdminClassicInterface;
 use Pimcore\Extension\Bundle\Traits\BundleAdminClassicTrait;
 
-use SergeDesign\StarterkitBundle\Installer;
+use SergeDesign\StarterkitBundle\Installer\Install;
 
 class PimcoreStarterkitBundle extends AbstractPimcoreBundle implements PimcoreBundleAdminClassicInterface
 {
