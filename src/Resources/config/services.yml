@@ -4,7 +4,7 @@ services:
         autoconfigure: true
         public: true #just a quick fix--use dependencyInjection //use false
 
-    SergeDesign\StarterkitBundle\Tools\Install:
+    SergeDesign\StarterkitBundle\Installer\Install:
         arguments:
             $bundle: "@=service('kernel').getBundle('PimcoreStarterkitBundle')"
         calls:

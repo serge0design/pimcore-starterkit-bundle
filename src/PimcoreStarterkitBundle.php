@@ -6,9 +6,16 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 use Pimcore\Extension\Bundle\PimcoreBundleAdminClassicInterface;
 use Pimcore\Extension\Bundle\Traits\BundleAdminClassicTrait;
 
+use SergeDesign\StarterkitBundle\Installer;
+
 class PimcoreStarterkitBundle extends AbstractPimcoreBundle implements PimcoreBundleAdminClassicInterface
 {
     use BundleAdminClassicTrait;
+
+    final public function getInstaller(): Install
+    {
+        return $this->container->get(Install::class);
+    }
 
     public function getPath(): string
     {
